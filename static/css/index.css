@@ -3,10 +3,6 @@ body {
     overflow-y: hidden;
 }
 
-* {
-    font-family: 'Iosevka Web', monospace;
-}
-
 body {
     height: 95vh;
     font-family: 'Iosevka Web', monospace;
@@ -80,6 +76,8 @@ textarea {
     color: inherit;
     font-size: inherit;
     line-height: inherit;
+
+    font-family: monospace;
 }
 
 select {
