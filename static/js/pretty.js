@@ -21,6 +21,8 @@ function wrapClicked() {
 
 function forkClicked() {
     let text = pasteContentDiv.innerText;
+    // using a table results in spurious linebreaks, so remove them
+    text = text.replaceAll('\n\n', '\n');
     localStorage["forkText"] = text;
 
     console.log(text);

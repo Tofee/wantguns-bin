@@ -8,18 +8,23 @@ span {
 }
 
 pre {
+  display: table;
+  border-spacing: 0.5em 0px;
   counter-reset: line;
+}
+
+pre>span {
+  display: table-row;
 }
 
 pre>span:before {
   counter-increment: line;
   content: counter(line);
-  display: inline-block;
+  display: table-cell;
   border-right: 1px solid #ddd;
   padding: 0 .5em;
   margin-right: .5em;
   color: #888;
-  width: 3em;
 }
 
 .topRightBox {
