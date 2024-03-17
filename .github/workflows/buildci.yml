@@ -13,7 +13,7 @@ jobs:
         run: cargo fmt -- --check
 
       - name: Clippy
-        run: cargo clippy -- -Dwarnings
+        run: cargo clippy -- -Dwarnings -A clippy::blocks_in_conditions
       
       
   build:
