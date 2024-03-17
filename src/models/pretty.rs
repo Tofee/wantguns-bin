@@ -1,12 +1,14 @@
 use std::fs;
 use std::path::Path;
 
-use syntect::util::LinesWithEndings;
 use syntect::easy::HighlightLines;
 use syntect::highlighting::{Theme, ThemeSet};
-use syntect::html::{start_highlighted_html_snippet, append_highlighted_html_for_styled_line};
 use syntect::html::IncludeBackground;
-use syntect::parsing::{SyntaxSet, SyntaxReference};
+use syntect::html::{
+    append_highlighted_html_for_styled_line, start_highlighted_html_snippet,
+};
+use syntect::parsing::{SyntaxReference, SyntaxSet};
+use syntect::util::LinesWithEndings;
 
 static SYNTAXES: &[u8] =
     include_bytes!("../../resources/syntaxes/syntaxes.bin");
@@ -48,5 +50,7 @@ pub fn get_pretty_body(path: &Path, ext: &str) -> std::io::Result<String> {
         .find_syntax_by_token(ext)
         .unwrap_or_else(|| ss.find_syntax_plain_text());
 
-    Ok(highlighted_html_for_string_newline_class(&content, &ss, syntax, &theme))
+    Ok(highlighted_html_for_string_newline_class(
+        &content, &ss, syntax, &theme,
+    ))
 }
