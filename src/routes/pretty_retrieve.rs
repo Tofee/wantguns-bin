@@ -1,6 +1,7 @@
 use rocket::response::Redirect;
 use rocket_dyn_templates::Template;
 use std::fs;
+use time::OffsetDateTime;
 
 use std::collections::HashMap;
 use std::io::ErrorKind::{InvalidData, NotFound};
@@ -61,7 +62,20 @@ pub async fn pretty_retrieve_inner(
     };
 
     let mut map = HashMap::new();
-    map.insert("title", id.to_string());
+    let t: OffsetDateTime = modified_date.into();
+    map.insert(
+        "title",
+        format!(
+            "{id} ({:0>4}-{:0>2}-{:0>2} {:0>2}:{:0>2}:{:0>2})",
+            t.year(),
+            t.month() as u8,
+            t.day(),
+            t.hour(),
+            t.minute(),
+            t.second()
+        )
+        .to_string(),
+    );
     map.insert("body", contents);
     let rendered = Template::render("pretty.html", &map);
 
