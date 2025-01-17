@@ -20,7 +20,7 @@ fn valid_syn(syn: &str) -> bool {
     flag
 }
 
-impl<'a> PasteIdSyntax<'a> {
+impl PasteIdSyntax<'_> {
     pub fn get_fname(&self) -> &str {
         self.syn_id.split('.').collect::<Vec<&str>>()[0]
     }

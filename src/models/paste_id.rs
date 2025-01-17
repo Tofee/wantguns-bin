@@ -11,7 +11,7 @@ fn valid_id(id: &str) -> bool {
     id.chars().all(char::is_alphanumeric)
 }
 
-impl<'a> PasteId<'a> {
+impl PasteId<'_> {
     pub fn new(size: usize) -> PasteId<'static> {
         let id: String = rand::thread_rng()
             .sample_iter(&Alphanumeric)
@@ -34,7 +34,7 @@ impl<'a> FromParam<'a> for PasteId<'a> {
     }
 }
 
-impl<'a> fmt::Display for PasteId<'a> {
+impl fmt::Display for PasteId<'_> {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "{}", self.0)
     }
