@@ -8,12 +8,13 @@ use crate::models::paste_id::PasteId;
 #[derive(FromForm)]
 pub struct PasteIdForm {
     content: String,
+    custom_name: String,
     ext: String,
 }
 
 #[post("/submit", data = "<paste>")]
 pub async fn submit(paste: Form<PasteIdForm>) -> Redirect {
-    let id = PasteId::new(6);
+    let id = PasteId::new(6, paste.custom_name.as_str());
 
     let filepath = Path::new(&get_upload_dir()).join(format!("{id}", id = id));
     let content = &paste.content;

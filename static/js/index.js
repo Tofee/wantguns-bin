@@ -8,6 +8,7 @@ const textarea = document.querySelector('textarea');
 const select = document.querySelector('select');
 const submitButton = document.querySelector('button[type="submit"]');
 const filterSelectInput = document.querySelector('.filterSelect');
+const customName = document.querySelector('.customNameInput');
 
 window.onload = () => {
     if (localStorage["forkText"] !== null) {
@@ -22,6 +23,7 @@ const onInput = () => {
     submitButton.classList.toggle('hidden', !textarea.value);
     select.classList.toggle('hidden', !textarea.value);
     filterSelectInput.classList.toggle('hidden', !textarea.value);
+    customName.classList.toggle('hidden', !textarea.value);
     fileUpload.classList.toggle('hidden', textarea.value);
 }
 textarea.addEventListener('input', onInput);

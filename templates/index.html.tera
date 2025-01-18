@@ -205,6 +205,9 @@ SEE ALSO
                 <option value="zig">Zig</option>
             </select>
         </div>
+        <div class="customName">
+            <input  name="custom_name" class="customNameInput" placeholder="Custom paste name..."/>
+        </div>
         <div class="submitButtonBox">
             <button type="submit" title="Paste">Paste</button>
         </div>
